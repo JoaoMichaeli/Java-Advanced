@@ -24,7 +24,7 @@ public class Jogo {
         if (jogadorEstourou() && computadorEstourou() || empataram()){
             return "Empatou";
         }
-        if (computadorEstourou() || jogadorGanhou() ){
+        if (computadorEstourou() || !jogadorEstourou() && jogadorGanhou() ){
             return "Você ganhou";
         }
 

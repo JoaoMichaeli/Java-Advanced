@@ -2,7 +2,7 @@ package com.example;
 
 public enum Naipe {
     Hearts,
-    Spader,
+    Spades,
     Diamonds,
     Clubs
 }
