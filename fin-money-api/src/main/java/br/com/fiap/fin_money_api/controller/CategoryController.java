@@ -39,9 +39,9 @@ public class CategoryController {
             .filter(c -> c.getId().equals(id))
             .findFirst();
         if (category.isEmpty()){   // Nunca acesse a categoria de um option sem ter certeza que o valor está presente.
-            return ResponseEntity.status(404).build();
+            return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.status(200).body(category.get());
+        return ResponseEntity.ok(category.get());
         }
 
 }
