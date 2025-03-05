@@ -12,36 +12,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.fiap.gyma.model.Category;
+import br.com.fiap.gyma.model.Exercises;
 
 @RestController
-public class CategoryController {
+public class ExercisesController {
 
-    private List<Category> repository = new ArrayList<>();
+    private List<Exercises> repository = new ArrayList<>();
     
-    @GetMapping("/categories")
-    public List<Category> index(){
+    @GetMapping("/Exercises")
+    public List<Exercises> index(){
         return repository;
     }
 
-    @PostMapping("/categories")
+    @PostMapping("/Exercises")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Category create(@RequestBody Category category){
-        System.out.println("Cadastrando categoria " + category.getName());
-        repository.add(category);
-        return category;
+    public Exercises create(@RequestBody Exercises exercises){
+        System.out.println("Cadastrando exercício " + exercises.getName());
+        repository.add(exercises);
+        return exercises;
     }
 
-    @GetMapping("/categories/{id}")
-    public ResponseEntity<Category> get(@PathVariable Long id){
-        System.out.println("Buscando categoria " + id);
-        var category = repository.stream()
+    @GetMapping("/exercises/{id}")
+    public ResponseEntity<Exercises> get(@PathVariable Long id){
+        System.out.println("Buscando exercício " + id);
+        var Exercises = repository.stream()
             .filter(c -> c.getId().equals(id))
             .findFirst();
-        if (category.isEmpty()){
+        if (exercises.isEmpty()){
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(category.get());
+        return ResponseEntity.ok(exercises.get());
         }
 
 }
