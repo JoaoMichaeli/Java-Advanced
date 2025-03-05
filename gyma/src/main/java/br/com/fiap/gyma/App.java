@@ -1,4 +1,4 @@
-package br.com.fiap.fin_money_api;
+package br.com.fiap.gyma;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

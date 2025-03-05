@@ -1,4 +1,4 @@
-package br.com.fiap.fin_money_api.model;
+package br.com.fiap.gyma.model;
 
 import java.util.Random;
 

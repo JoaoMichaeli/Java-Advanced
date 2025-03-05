@@ -1,4 +1,4 @@
-package br.com.fiap.fin_money_api.controller;
+package br.com.fiap.gyma.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.fiap.fin_money_api.model.Category;
+import br.com.fiap.gyma.model.Category;
 
 @RestController
 public class CategoryController {
@@ -38,7 +38,7 @@ public class CategoryController {
         var category = repository.stream()
             .filter(c -> c.getId().equals(id))
             .findFirst();
-        if (category.isEmpty()){   // Nunca acesse a categoria de um option sem ter certeza que o valor está presente.
+        if (category.isEmpty()){
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(category.get());
