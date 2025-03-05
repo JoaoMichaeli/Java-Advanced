@@ -19,12 +19,12 @@ public class ExercisesController {
 
     private List<Exercises> repository = new ArrayList<>();
     
-    @GetMapping("/Exercises")
+    @GetMapping("/exercises")
     public List<Exercises> index(){
         return repository;
     }
 
-    @PostMapping("/Exercises")
+    @PostMapping("/exercises")
     @ResponseStatus(code = HttpStatus.CREATED)
     public Exercises create(@RequestBody Exercises exercises){
         System.out.println("Cadastrando exercício " + exercises.getName());
@@ -35,7 +35,7 @@ public class ExercisesController {
     @GetMapping("/exercises/{id}")
     public ResponseEntity<Exercises> get(@PathVariable Long id){
         System.out.println("Buscando exercício " + id);
-        var Exercises = repository.stream()
+        var exercises = repository.stream()
             .filter(c -> c.getId().equals(id))
             .findFirst();
         if (exercises.isEmpty()){
