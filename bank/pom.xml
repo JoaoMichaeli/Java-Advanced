@@ -8,11 +8,11 @@
 		<version>3.4.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>cp1</artifactId>
+	<groupId>br.com.example</groupId>
+	<artifactId>bank</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cp1</name>
-	<description>Demo project for Spring Boot</description>
+	<name>bank</name>
+	<description>API Banco Digital</description>
 	<url/>
 	<licenses>
 		<license/>
