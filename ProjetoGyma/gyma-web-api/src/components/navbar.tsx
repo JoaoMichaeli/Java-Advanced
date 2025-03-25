@@ -11,7 +11,7 @@ export default function Navbar(props: NavbarProps) {
 
     const link = [
         { link: "/dashboard", label: "Dashboard" },
-        { link: "/workouts", label: "Treinos" },
+        { link: "/exercices", label: "Treinos" },
         { link: "/checkin", label: "Check-in" },
         { link: "/login", label: "Login" }
     ];

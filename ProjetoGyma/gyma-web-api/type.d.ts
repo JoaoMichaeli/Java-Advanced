@@ -3,3 +3,8 @@ interface Category {
     icon: string,
     name: string
 }
+
+interface Exercise {
+    id: number,
+    name: string
+}
