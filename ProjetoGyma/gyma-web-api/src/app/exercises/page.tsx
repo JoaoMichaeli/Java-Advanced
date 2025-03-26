@@ -1,4 +1,3 @@
-
 import ExercicesItem from "@/components/exercises-item";
 import Navbar from "@/components/navbar";
 
