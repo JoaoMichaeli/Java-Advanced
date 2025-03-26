@@ -16,7 +16,7 @@ export default async function ExercisesPage() {
 
     <main className="flex items-center justify-center">
         <div className=" bg-slate-900 rounded min-w-2/3 p-5 m-6">
-            <h2 className="text-lg font-bold">Treinos</h2>
+            <h2 className="text-lg font-bold text-white ">Treinos</h2>
 
             { data.map( exercices=> <ExercicesItem key={exercices.id} exercise={exercices} /> ) }
             
@@ -25,3 +25,4 @@ export default async function ExercisesPage() {
     </>
     )
 }
+
