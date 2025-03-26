@@ -4,7 +4,7 @@ import br.com.fiap.gyma_api.model.Exercise;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -39,5 +39,21 @@ public class ExerciseController {
 
         return ResponseEntity.ok(first.get());
     }
+
+    /*
+    @DeleteMapping("{id}")
+    public ResponseEntity<Exercise> delete(@PathVariable Long id){
+        repository.delete(getExercise(id));
+        return ResponseEntity.noContent().build();
+    }
+
+    private Exercise getExercise(Long id){
+        return repository.findById(id)
+                .orElseThrow(
+                        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Exercicio não encontrada")
+                );
+    }
+    
+     */
 
 }
