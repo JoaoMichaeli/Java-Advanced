@@ -1,5 +1,6 @@
 interface Exercise {
     id: number,
     icon: string,
-    name: string
+    name: string,
+    description?: string
 }
