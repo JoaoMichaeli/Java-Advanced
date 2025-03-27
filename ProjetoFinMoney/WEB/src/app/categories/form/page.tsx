@@ -1,10 +1,20 @@
+"use client"
+import { createCategory } from '@/actions/categories-actions';
 import Navbar from '@/components/navbar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Link from 'next/link';
+import { useActionState } from 'react';
 
+const initialState = {
+    values: {
+        name: "",
+        icon: ""
+    }
+}
 
-export default async function Categoriespage(){
+export default function CategoriesFormPage(){
+    const [state, formAction, pendind] = useActionState(createCategory, initialState)
 
     return(
     <>
@@ -14,7 +24,7 @@ export default async function Categoriespage(){
         <div className=" bg-slate-900 rounded p-5 m-6 max-w-[500]">
             <h2 className="font-bold">Cadastrar Categoria</h2>
 
-            <form action="" className="space-y-4 mt-6">
+            <form action={formAction} className="space-y-4 mt-6">
                 <Input name="name" placeholder="nome da categoria"/>
                 <Input name="icon" placeholder="ícone"/>
 
