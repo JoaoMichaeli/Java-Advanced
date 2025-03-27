@@ -8,7 +8,7 @@ export default function LoginPage(){
 
         <main className="flex items-center justify-center">
             <div className=" bg-slate-900 rounded min-w-2/3 p-5 m-6">
-                <h2 className="text-lg font-bold text-white ">Check-In</h2>
+                <h2 className="text-lg font-bold text-white ">Login</h2>
             </div>
         </main>
         </>
