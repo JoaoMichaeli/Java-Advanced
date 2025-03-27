@@ -1,10 +1,9 @@
 import CategoryItem from "@/components/category-item";
 import Navbar from "@/components/navbar";
-
-async function getCategories(){
-    const response = await fetch("http://localhost:8080/categories")
-    return await response.json()
-}
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
+import Link from "next/link";
+import { getCategories } from "@/actions/categories-actions";
 
 export default async function Categoriespage(){
     const data: Array<Category> = await getCategories()
@@ -15,7 +14,15 @@ export default async function Categoriespage(){
 
     <main className="flex items-center justify-center">
         <div className=" bg-slate-900 rounded min-w-2/3 p-5 m-6">
-            <h2 className="text-lg font-bold">Categorias</h2>
+            <div className="flex justify-between">
+                <h2 className="text-lg font-bold">Categorias</h2>
+                <Button asChild>
+                    <Link href="/categories/form">
+                        <Plus/>
+                        Nova Categoria
+                    </Link>
+                </Button>
+            </div>
 
             { data.map( category => <CategoryItem key={category.id} category={category} /> ) }
             
