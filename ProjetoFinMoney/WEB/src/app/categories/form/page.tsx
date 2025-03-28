@@ -3,7 +3,6 @@ import { createCategory } from '@/actions/categories-actions';
 import Navbar from '@/components/navbar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { icons } from 'lucide-react';
 import Link from 'next/link';
 import { useActionState } from 'react';
 
@@ -20,7 +19,8 @@ const initialState = {
 
 export default function CategoriesFormPage(){
     const [state, formAction, pendind] = useActionState(
-        createCategory, initialState
+        createCategory,
+        initialState
     );
     return(
     <>
@@ -32,12 +32,11 @@ export default function CategoriesFormPage(){
             <form action={formAction} className="space-y-4 mt-6">
 
                 <div>
-                    <Input name="name" placeholder="nome da categoria" aria-invalid />
-                    <span className='text-sm text-destructive'>campo obrigatório</span>
+                    <Input name="name" placeholder="nome da categoria" aria-invalid={!!state?.errors.name}/>
+                    <span className='text-sm text-destructive'>{state?.errors.name}</span>
                 </div>
 
                 <Input name="icon" placeholder="ícone"/>
-            
                 <div className="flex justify-around">
                     <Button variant="outline" asChild>
                         <Link href="/categories">Cancelar</Link>
@@ -45,7 +44,6 @@ export default function CategoriesFormPage(){
                     <Button>Salvar</Button>
                 </div>
             </form>
-    
         </div>
     </main>
     </>
