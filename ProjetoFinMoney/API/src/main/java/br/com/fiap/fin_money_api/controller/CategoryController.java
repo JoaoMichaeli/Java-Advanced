@@ -1,7 +1,6 @@
 package br.com.fiap.fin_money_api.controller;
 
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-
 import br.com.fiap.fin_money_api.model.Category;
 import br.com.fiap.fin_money_api.repository.CategoryRepository;
 
@@ -39,8 +37,7 @@ public class CategoryController {
     @ResponseStatus(code = HttpStatus.CREATED)
     public Category create(@RequestBody Category category) {
         log.info("Cadastrando categoria " + category.getName());
-        repository.save(category);
-        return category;
+        return repository.save(category);
     }
 
     @GetMapping("{id}")
