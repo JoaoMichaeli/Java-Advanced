@@ -36,7 +36,11 @@ export default function CategoriesFormPage(){
                     <span className='text-sm text-destructive'>{state?.errors.name}</span>
                 </div>
 
-                <Input name="icon" placeholder="ícone"/>
+                <div>
+                    <Input name="icon" placeholder="nome do ícone" aria-invalid={!!state?.errors.icon}/>
+                    <span className='text-sm text-destructive'>{state?.errors.icon}</span>
+                </div>
+                
                 <div className="flex justify-around">
                     <Button variant="outline" asChild>
                         <Link href="/categories">Cancelar</Link>
