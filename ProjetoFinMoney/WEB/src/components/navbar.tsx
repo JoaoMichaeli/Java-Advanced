@@ -25,7 +25,7 @@ const link=[
         
             )}
         </ul>
-        <img className="size-12 rounded-full" src="http://github.com/Cruz-011.png" alt="" />
+        <img className="size-12 rounded-full" src="https://avatars.githubusercontent.com/u/161324070?s=96&v=4" alt="" />
     </nav>
     )
 }
