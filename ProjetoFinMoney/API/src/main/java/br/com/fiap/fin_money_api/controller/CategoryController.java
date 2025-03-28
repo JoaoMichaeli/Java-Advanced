@@ -1,6 +1,7 @@
 package br.com.fiap.fin_money_api.controller;
 
 import java.util.List;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class CategoryController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Category create(@RequestBody Category category) {
+    public Category create(@RequestBody @Valid Category category) {
         log.info("Cadastrando categoria " + category.getName());
         return repository.save(category);
     }
@@ -54,7 +55,7 @@ public class CategoryController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Category> update(@PathVariable Long id, @RequestBody Category category) {
+    public ResponseEntity<Category> update(@PathVariable Long id, @RequestBody @Valid Category category) {
         log.info("Atualizando categoria " + id + " com " + category);
 
         getCategory(id);
