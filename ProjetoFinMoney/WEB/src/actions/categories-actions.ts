@@ -25,10 +25,15 @@ export async function createCategory(initialState: any, formData: FormData) {
    
     // return early
     if(!response.ok){
+        const errors = await response.json();
         return {
+            values:{
+                name: formData.get("name"),
+                icon: formData.get("icon")
+            },
             errors: {
-                name: "nome é obrigatório",
-                icon: "tem que começar com maiuscula"
+                name: errors.find((e: any) => e.field === "name")?.message,
+                icon: errors.find((e: any) => e.field === "icon")?.message
             }
         }
     }
