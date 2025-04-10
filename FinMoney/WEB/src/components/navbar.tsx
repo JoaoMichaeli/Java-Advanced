@@ -16,8 +16,8 @@ const link=[
 ]
 
     return(
-        <nav className="flex px-6 pt-6  justify-between bg-slate-900">
-        <h1 className="text-4xl font-bold">FinMoney</h1>
+        <nav className="flex px-6 pt-6 pb-4 justify-between items-center bg-slate-900">
+        <h1 className="text-4xl font-bold text-white mb-4">FinMoney</h1>
 
         <ul className="flex gap-6 text-xl ">
             {link.map(link=>
@@ -25,7 +25,10 @@ const link=[
         
             )}
         </ul>
-        <img className="size-12 rounded-full" src="http://github.com/Cruz-011.png" alt="" />
+        <img 
+            className="size-12 rounded-full hover:scale-105 transition-transform duration-300" 
+            src="https://avatars.githubusercontent.com/u/161324070?v=4" 
+            alt="" />
     </nav>
     )
 }
