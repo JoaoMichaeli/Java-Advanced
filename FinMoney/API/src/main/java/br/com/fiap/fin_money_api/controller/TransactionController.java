@@ -28,7 +28,7 @@ public class TransactionController {
     ){
         log.info("Buscando transações com descrição {}", description);
 
-        if(description != null) return repository.findByDescription(description, pageable);
+        if(description != null) return repository.findByDescriptionContainingIgnoringCase(description, pageable);
 
         return repository.findAll(pageable);
     }

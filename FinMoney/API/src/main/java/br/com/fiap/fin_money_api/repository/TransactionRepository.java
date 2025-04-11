@@ -9,5 +9,5 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
 
     //SELECT * FROM transaction WHERE description =: description
     //@Query("SELECT t FROM transaction as t WHERE t.description =: description") //JPQL
-    Page<Transaction> findByDescription(String description, Pageable pageable);
+    Page<Transaction> findByDescriptionContainingIgnoringCase(String description, Pageable pageable);
 }
