@@ -4,10 +4,15 @@ import br.com.fiap.fin_money_api.model.Transaction;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface TransactionRepository extends JpaRepository<Transaction, Long> {
+import java.time.LocalDate;
 
-    //SELECT * FROM transaction WHERE description =: description
-    //@Query("SELECT t FROM transaction as t WHERE t.description =: description") //JPQL
-    Page<Transaction> findByDescriptionContainingIgnoringCase(String description, Pageable pageable);
+public interface TransactionRepository extends JpaRepository<Transaction, Long>, JpaSpecificationExecutor<Transaction> {
+
+//    SELECT * FROM transaction WHERE description =: description
+//    @Query("SELECT t FROM transaction as t WHERE t.description =: description") //JPQL
+//    Page<Transaction> findByDescriptionContainingIgnoringCase(String description, Pageable pageable);
+//    Page<Transaction> findByDescriptionContainingIgnoringCaseAndDate(String description, LocalDate date, Pageable pageable);
+//    Page<Transaction> findByDate(LocalDate date, Pageable pageable);
 }
