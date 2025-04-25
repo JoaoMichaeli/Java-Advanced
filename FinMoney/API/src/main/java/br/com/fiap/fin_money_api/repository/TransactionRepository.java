@@ -1,8 +1,6 @@
 package br.com.fiap.fin_money_api.repository;
 
 import br.com.fiap.fin_money_api.model.Transaction;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
