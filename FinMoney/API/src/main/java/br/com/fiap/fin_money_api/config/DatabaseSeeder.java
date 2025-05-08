@@ -7,8 +7,11 @@ import java.util.List;
 import java.util.Random;
 import br.com.fiap.fin_money_api.model.Transaction;
 import br.com.fiap.fin_money_api.model.TransactionType;
+import br.com.fiap.fin_money_api.model.User;
 import br.com.fiap.fin_money_api.repository.TransactionRepository;
+import br.com.fiap.fin_money_api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import br.com.fiap.fin_money_api.model.Category;
 import br.com.fiap.fin_money_api.repository.CategoryRepository;
@@ -23,15 +26,38 @@ public class DatabaseSeeder {
     @Autowired
     private TransactionRepository transactionRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
+    // Interface para criptografar as senhas
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @PostConstruct
     public void init(){
 
+        String password = passwordEncoder.encode("12345");
+
+        var joao = User.builder()
+                .email("joao@fiap.com.br")
+                .password(password)
+                .build();
+
+        var maria = User.builder()
+                .email("maria@fiap.com.br")
+                .password(password)
+                .build();
+
+        userRepository.saveAll(List.of(joao, maria));
+
         var categories = List.of(
-                Category.builder().name("Educação").icon("Book").build(),
-                Category.builder().name("Lazer").icon("Dices").build(),
-                Category.builder().name("Transporte").icon("Bus").build()
+                Category.builder().name("Educação").icon("Book").user(joao).build(),
+                Category.builder().name("Lazer").icon("Dices").user(joao).build(),
+                Category.builder().name("Transporte").icon("Bus").user(joao).build(),
+                Category.builder().name("Moradia").icon("House").user(joao).build(),
+                Category.builder().name("Saúde").icon("Heart").user(maria).build()
         );
-        
+
         categoryRepository.saveAll(categories);
 
         var descriptions = List.of(
@@ -99,5 +125,5 @@ public class DatabaseSeeder {
         }
         transactionRepository.saveAll(transactions);
     }
-    
+
 }
