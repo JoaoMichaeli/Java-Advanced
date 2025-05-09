@@ -2,7 +2,9 @@ package br.com.fiap.fin_money_api.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,6 +19,7 @@ public class SecurityConfig {
                 auth -> auth
 //                        .requestMatchers("/categories/**")
 //                        .hasRole("ADMIN")
+                        .requestMatchers("/login/**").permitAll()
                         .anyRequest()
                         .authenticated()                
         )
@@ -24,8 +27,6 @@ public class SecurityConfig {
                 .httpBasic(Customizer.withDefaults())
                 .build();
     }
-
-
 
 //    @Bean
 //    UserDetailsService userDetailsService(){
@@ -49,5 +50,10 @@ public class SecurityConfig {
     @Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
+        return config.getAuthenticationManager();
     }
 }
