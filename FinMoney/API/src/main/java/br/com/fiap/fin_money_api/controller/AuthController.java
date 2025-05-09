@@ -25,6 +25,6 @@ public class AuthController {
         var auth = new UsernamePasswordAuthenticationToken(credentials.email(), credentials.password());
         var user = (User) authenticationManager.authenticate(auth).getPrincipal();
 
-        return tokenService.createToke(user);
+        return tokenService.createToken(user);
     }
 }

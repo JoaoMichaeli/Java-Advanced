@@ -15,7 +15,7 @@ public class TokenService {
     private Instant expiresAt = LocalDateTime.now().plusMinutes(10).toInstant(ZoneOffset.UTC);
     private Algorithm algorithm = Algorithm.HMAC256("secret");
 
-    public Token createToke(User user){
+    public Token createToken(User user){
         var jwt = JWT.create()
                 .withSubject(user.getId().toString())
                 .withClaim("email", user.getEmail())
