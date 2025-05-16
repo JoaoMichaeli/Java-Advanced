@@ -1,5 +1,6 @@
 package br.com.fiap.fin_money_api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -29,6 +30,7 @@ public class Transaction {
     private BigDecimal amount;
 
     @PastOrPresent(message = "Não pode ser no futuro")
+    @JsonIgnore
     private LocalDate date;
 
     @NotNull(message = "Campo obrigatório")
