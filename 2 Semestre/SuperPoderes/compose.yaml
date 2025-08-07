@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    container_name: superpower
+    environment:
+      - 'POSTGRES_DB=superpower'
+      - 'POSTGRES_PASSWORD=superpower'
+      - 'POSTGRES_USER=superpower'
+    ports:
+      - '5432:5432'
