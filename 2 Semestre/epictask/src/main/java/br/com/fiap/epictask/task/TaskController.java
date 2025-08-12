@@ -3,7 +3,9 @@ package br.com.fiap.epictask.task;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/task")
@@ -18,7 +20,19 @@ public class TaskController {
     @GetMapping
     public String index(Model model){
         var tasks = taskService.getAllTasks();
-        model.addAttribute("tasks",tasks);
+        model.addAttribute("tasks", tasks);
         return "index";
+    }
+
+    @GetMapping("/form")
+    public String form(){
+        return "form";
+    }
+
+    @PostMapping("/form")
+    public String create(Task task, RedirectAttributes redirect ){ //session
+        taskService.save(task);
+        redirect.addFlashAttribute("message", "Tarefa cadastrada com sucesso!");
+        return "redirect:/task"; //301
     }
 }
