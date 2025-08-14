@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    container_name: ovnis
+    environment:
+      - 'POSTGRES_DB=ovnis'
+      - 'POSTGRES_PASSWORD=ovnis'
+      - 'POSTGRES_USER=ovnis'
+    ports:
+      - '5432:5432'

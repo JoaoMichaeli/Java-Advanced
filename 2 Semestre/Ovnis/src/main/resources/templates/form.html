@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dracula">
+<head>
+    <meta charset="UTF-8">
+    <title>Nova Denúncia de OVNI</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="bg-base-200 min-h-screen">
+
+<h1 class="text-3xl font-bold text-primary p-8 text-center">Nova Denúncia de OVNI</h1>
+
+<main class="grid place-items-center p-8">
+    <form class="w-full max-w-lg bg-base-100 shadow-xl p-6 rounded-xl" method="post">
+
+        <fieldset class="fieldset mb-4">
+            <legend class="fieldset-legend">Local</legend>
+            <input name="local" type="text" class="input input-bordered w-full" placeholder="Digite o local do avistamento" required />
+        </fieldset>
+
+        <fieldset class="fieldset mb-4">
+            <legend class="fieldset-legend">Data e Hora</legend>
+            <input name="datetime" type="datetime-local" class="input input-bordered w-full" required />
+        </fieldset>
+
+        <fieldset class="fieldset mb-4">
+            <legend class="fieldset-legend">Cor</legend>
+            <input name="color" type="text" class="input input-bordered w-full" placeholder="Ex: Verde brilhante" required />
+        </fieldset>
+
+        <fieldset class="fieldset mb-4">
+            <legend class="fieldset-legend">Formato</legend>
+            <select name="shape" class="select select-bordered w-full" required>
+                <option disabled selected>Selecione o formato</option>
+                <option value="CIRCLE">Círculo</option>
+                <option value="SPHERE">Quadrado</option>
+                <option value="TRIANGLE">Triângulo</option>
+                <option value="OTHER">Outros</option>
+            </select>
+        </fieldset>
+
+        <fieldset class="fieldset mb-6">
+            <legend class="fieldset-legend">Quantidade</legend>
+            <input name="quantity" type="number" min="1" class="input input-bordered w-full" placeholder="Quantidade de objetos" required />
+        </fieldset>
+
+        <div class="flex justify-between">
+            <a href="/ovnis" class="btn btn-neutral">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+
+    </form>
+</main>
+
+</body>
+</html>

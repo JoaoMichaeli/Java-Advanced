@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dracula">
+<head>
+    <meta charset="UTF-8">
+    <title>Ovnis</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="bg-base-200 min-h-screen">
+
+<header class="navbar bg-primary text-primary-content px-8 shadow-lg">
+    <div class="flex-1">
+        <h1 class="text-3xl font-extrabold">Ovnis</h1>
+    </div>
+    <div class="flex-none">
+        <a href="/ovnis/form" class="btn btn-accent font-bold">+ Nova Denúncia</a>
+    </div>
+</header>
+
+<div th:if="${message}" role="alert" class="alert alert-success alert-soft m-4">
+    <span th:text="${message}"></span>
+</div>
+
+<main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-8">
+    <div class="card bg-base-100 shadow-xl w-full" th:each="ovni : ${ovnis}">
+        <div class="card-body">
+            <h2 class="card-title" th:text="${ovni.local}">Local da ocorrência</h2>
+            <p>
+                <strong>Data/Hora:</strong>
+                <span th:text="${ovni.datetime != null} ? ${#temporals.format(ovni.datetime, 'dd/MM/yyyy HH:mm')} : ''"></span>
+            </p>
+            <p><strong>Cor:</strong> <span th:text="${ovni.color}"></span></p>
+            <p><strong>Formato:</strong> <span th:text="${ovni.shape}"></span></p>
+            <p><strong>Quantidade:</strong> <span th:text="${ovni.quantity}"></span></p>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
