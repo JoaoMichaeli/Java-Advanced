@@ -1,0 +1,22 @@
+<!-- templates/fragments/header.html -->
+<div th:fragment="header" class="navbar bg-base-100 shadow-md mb-6">
+    <div class="flex-1">
+        <a href="/characters" class="btn btn-ghost text-xl font-bold" th:text="#{app.title}">AI Character Creator</a>
+    </div>
+    <div class="flex-none">
+        <ul class="menu menu-horizontal px-1">
+            <li><a href="/characters" th:text="#{menu.characters}">Characters</a></li>
+            <li><a href="/characters/new" th:text="#{menu.new}">New</a></li>
+            <li>
+                <details class="dropdown dropdown-end">
+                    <summary class="btn btn-ghost" th:text="#{menu.language}">Language</summary>
+                    <ul class="p-2 shadow bg-base-100 rounded-box w-32">
+                        <li><a href="?lang=en_US">English</a></li>
+                        <li><a href="?lang=pt_BR">Português</a></li>
+                        <li><a href="?lang=es_ES">Español</a></li>
+                    </ul>
+                </details>
+            </li>
+        </ul>
+    </div>
+</div>

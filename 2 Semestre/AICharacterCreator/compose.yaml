@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    container_name: ai_character
+    environment:
+      - 'POSTGRES_DB=aicharacter'
+      - 'POSTGRES_PASSWORD=aicharacter'
+      - 'POSTGRES_USER=aicharacter'
+    ports:
+      - '5432:5432'

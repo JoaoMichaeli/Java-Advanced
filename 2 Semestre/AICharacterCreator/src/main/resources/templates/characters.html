@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{character.list}">Character List</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-base-200 p-6">
+
+<!-- Header fragment -->
+<div th:replace="fragments/header :: header"></div>
+
+<div class="container mx-auto">
+    <h1 class="text-3xl font-bold mb-6 text-center" th:text="#{character.list}">Character List</h1>
+
+    <!-- Mensagem de sucesso -->
+    <div th:if="${message}" class="alert alert-success shadow-lg mb-4">
+        <span th:text="${message}"></span>
+    </div>
+
+    <!-- Botão Novo -->
+    <div class="mb-4 flex justify-end">
+        <a href="/characters/new" class="btn btn-primary" th:text="#{menu.new}">+ New Character</a>
+    </div>
+
+    <!-- Tabela de personagens -->
+    <div class="overflow-x-auto">
+        <table class="table table-zebra w-full">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th th:text="#{character.form.name}">Name</th>
+                <th th:text="#{character.form.species}">Species</th>
+                <th th:text="#{character.form.level}">Level</th>
+                <th th:text="#{character.form.bio}">Bio</th>
+                <th th:text="#{character.form.creationDate}">Created</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="c : ${characters}">
+                <td th:text="${c.id}"></td>
+                <td th:text="${c.name}"></td>
+                <td th:text="${c.speciesGroup}"></td>
+                <td th:text="${c.startingLevel}"></td>
+                <td th:text="${c.bio}"></td>
+                <td th:text="${c.creationDate}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
