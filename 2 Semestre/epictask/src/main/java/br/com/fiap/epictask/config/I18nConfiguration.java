@@ -18,8 +18,9 @@ public class I18nConfiguration implements WebMvcConfigurer {
 
     @Bean
     MessageSource messageSource() {
-        var messageSource = new ResourceBundleMessageSource();
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasename("messages");
+        messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
 
