@@ -3,65 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="#{character.create.title}">Create Character</title>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-base-200 p-6">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background: #0a0a0f;
+            color: #f0f0f0;
+        }
 
-<!-- Header fragment -->
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #00f0ff;
+            text-shadow: 0 0 10px #00f0ff, 0 0 20px #ff00f7;
+        }
+
+        .btn-cyber {
+            padding: 0.5rem 1rem;
+            background: linear-gradient(90deg, #ff00f7, #00f0ff);
+            color: #fff;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 10px #ff00f7, 0 0 20px #00f0ff;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cyber:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #00f0ff, 0 0 40px #ff00f7;
+        }
+
+        .form-cyber {
+            background: #1a1a2e;
+            border: 1px solid #00f0ff;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 0 20px #00f0ff;
+            color: #00f0ff;
+        }
+
+        .form-cyber input,
+        .form-cyber select,
+        .form-cyber textarea {
+            background: #0a0a0f;
+            color: #00f0ff;
+            border: 1px solid #00f0ff;
+            box-shadow: 0 0 5px #00f0ff;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            width: 100%;
+        }
+
+        .form-cyber label {
+            color: #00f0ff;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+
+        .form-cyber textarea {
+            resize: none;
+        }
+
+        .alert-cyber {
+            background: rgba(255, 0, 247, 0.1);
+            border-left: 4px solid #ff00f7;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            color: #ff00f7;
+        }
+
+        /* Ícone do calendário branco */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(100%) brightness(200%);
+            cursor: pointer;
+        }
+        input[type="date"] {
+            color: #00f0ff;
+        }
+    </style>
+</head>
+<body class="p-8">
+
 <div th:replace="fragments/header :: header"></div>
 
 <div class="container mx-auto max-w-lg">
-    <h1 class="text-3xl font-bold mb-6 text-center" th:text="#{character.create.title}">Create Character</h1>
+    <h1 th:text="#{character.create.title}">Create Character</h1>
 
-    <form th:action="@{/characters/new}" th:object="${character}" method="post" class="card bg-base-100 shadow-xl p-6 space-y-4">
+    <div th:if="${message}" class="alert-cyber">
+        <span th:text="${message}"></span>
+    </div>
 
-        <!-- Name -->
+    <form th:action="@{/characters/new}" th:object="${character}" method="post" class="form-cyber space-y-4">
+
         <div class="form-control">
-            <label class="label"><span class="label-text" th:text="#{character.form.name}">Name</span></label>
-            <input type="text" th:field="*{name}" class="input input-bordered" placeholder="Character name"/>
-            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-error text-sm"></span>
+            <label th:text="#{character.form.name}">Name</label>
+            <input type="text" th:field="*{name}" placeholder="Character name"/>
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-red-500 text-sm"></span>
         </div>
 
-        <!-- Species -->
         <div class="form-control">
-            <label class="label"><span class="label-text" th:text="#{character.form.species}">Species</span></label>
-            <select th:field="*{speciesGroup}" class="select select-bordered">
+            <label th:text="#{character.form.species}">Species</label>
+            <select th:field="*{speciesGroup}">
                 <option value="">-- Select --</option>
                 <option value="HUMAN" th:text="#{species.HUMAN}">Human</option>
                 <option value="CYBORG" th:text="#{species.CYBORG}">Cyborg</option>
                 <option value="ALIEN" th:text="#{species.ALIEN}">Alien</option>
                 <option value="ANDROID" th:text="#{species.ANDROID}">Android</option>
             </select>
-            <span th:if="${#fields.hasErrors('speciesGroup')}" th:errors="*{speciesGroup}" class="text-error text-sm"></span>
         </div>
 
-        <!-- Starting Level -->
         <div class="form-control">
-            <label class="label"><span class="label-text" th:text="#{character.form.level}">Starting Level</span></label>
-            <input type="number" th:field="*{startingLevel}" min="1" max="100" class="input input-bordered"/>
-            <span th:if="${#fields.hasErrors('startingLevel')}" th:errors="*{startingLevel}" class="text-error text-sm"></span>
+            <label th:text="#{character.form.level}">Starting Level</label>
+            <input type="number" th:field="*{startingLevel}" min="1" max="100"/>
         </div>
 
-        <!-- Bio -->
         <div class="form-control">
-            <label class="label"><span class="label-text" th:text="#{character.form.bio}">Bio</span></label>
-            <textarea th:field="*{bio}" class="textarea textarea-bordered" maxlength="280" placeholder="Short description"></textarea>
-            <span th:if="${#fields.hasErrors('bio')}" th:errors="*{bio}" class="text-error text-sm"></span>
+            <label th:text="#{character.form.bio}">Bio</label>
+            <textarea th:field="*{bio}" maxlength="280" placeholder="Short description"></textarea>
         </div>
 
-        <!-- Creation Date -->
         <div class="form-control">
-            <label class="label"><span class="label-text" th:text="#{character.form.creationDate}">Creation Date</span></label>
-            <input type="date" th:field="*{creationDate}" class="input input-bordered"/>
-            <span th:if="${#fields.hasErrors('creationDate')}" th:errors="*{creationDate}" class="text-error text-sm"></span>
+            <label th:text="#{character.form.creationDate}">Creation Date</label>
+            <input type="date" th:field="*{creationDate}"/>
         </div>
 
-        <!-- Botões -->
-        <div class="form-control mt-6 flex space-x-2">
-            <button type="submit" class="btn btn-primary" th:text="#{character.form.save}">Save</button>
-            <a href="/characters" class="btn btn-ghost" th:text="#{character.form.cancel}">Cancel</a>
+        <div class="flex space-x-2">
+            <button type="submit" class="btn-cyber" th:text="#{character.form.save}">Save</button>
+            <a href="/characters" class="btn-cyber" style="background: linear-gradient(90deg, #00f0ff, #ff00f7);" th:text="#{character.form.cancel}">Cancel</a>
         </div>
+
     </form>
 </div>
 

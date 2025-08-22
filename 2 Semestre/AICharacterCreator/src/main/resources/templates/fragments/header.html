@@ -1,19 +1,53 @@
-<!-- templates/fragments/header.html -->
-<div th:fragment="header" class="navbar bg-base-100 shadow-md mb-6">
+<div th:fragment="header" class="navbar shadow-md mb-6 px-6 py-4"
+     style="background: linear-gradient(90deg, #0a0a0f, #1a1a2e); color: #00f0ff; font-family: 'Orbitron', sans-serif;">
+
     <div class="flex-1">
-        <a href="/characters" class="btn btn-ghost text-xl font-bold" th:text="#{app.title}">AI Character Creator</a>
+        <a href="/characters" class="text-2xl font-extrabold"
+           th:text="#{app.title}"
+           style="text-shadow: 0 0 10px #00f0ff, 0 0 20px #ff00f7;">
+            AI Character Creator
+        </a>
     </div>
+
     <div class="flex-none">
-        <ul class="menu menu-horizontal px-1">
-            <li><a href="/characters" th:text="#{menu.characters}">Characters</a></li>
-            <li><a href="/characters/new" th:text="#{menu.new}">New</a></li>
+        <ul class="flex space-x-6 items-center">
             <li>
-                <details class="dropdown dropdown-end">
-                    <summary class="btn btn-ghost" th:text="#{menu.language}">Language</summary>
-                    <ul class="p-2 shadow bg-base-100 rounded-box w-32">
-                        <li><a href="?lang=en_US">English</a></li>
-                        <li><a href="?lang=pt_BR">Português</a></li>
-                        <li><a href="?lang=es_ES">Español</a></li>
+                <a href="/characters" th:text="#{menu.characters}"
+                   class="hover:text-[#ff00f7] transition-colors duration-300">
+                    Characters
+                </a>
+            </li>
+            <li>
+                <a href="/characters/new" th:text="#{menu.new}"
+                   class="hover:text-[#ff00f7] transition-colors duration-300">
+                    New
+                </a>
+            </li>
+            <li class="relative">
+                <details class="dropdown dropdown-end group">
+                    <summary class="cursor-pointer hover:text-[#ff00f7] transition-colors duration-300 flex items-center">
+                        <span th:text="#{menu.language}">Language</span>
+                        <svg class="ml-1 w-4 h-4 fill-current transition-transform duration-300 group-open:rotate-180"
+                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path d="M5.23 7.21a.75.75 0 011.06-.02L10 10.585l3.71-3.397a.75.75 0 111.02 1.1l-4 3.667a.75.75 0 01-1.02 0l-4-3.667a.75.75 0 01-.02-1.06z"/>
+                        </svg>
+                    </summary>
+                    <ul class="absolute right-0 mt-2 w-40 bg-[#0a0a0f] border border-[#00f0ff] rounded-lg shadow-lg opacity-0 invisible group-open:opacity-100 group-open:visible transition-opacity duration-300">
+                        <li>
+                            <a href="?lang=en_US" class="block px-4 py-2 hover:bg-[#00f0ff] hover:text-[#0a0a0f] transition-colors duration-300">
+                                English
+                            </a>
+                        </li>
+                        <li>
+                            <a href="?lang=pt_BR" class="block px-4 py-2 hover:bg-[#00f0ff] hover:text-[#0a0a0f] transition-colors duration-300">
+                                Português
+                            </a>
+                        </li>
+                        <li>
+                            <a href="?lang=es_ES" class="block px-4 py-2 hover:bg-[#00f0ff] hover:text-[#0a0a0f] transition-colors duration-300">
+                                Español
+                            </a>
+                        </li>
                     </ul>
                 </details>
             </li>
