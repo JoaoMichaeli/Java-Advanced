@@ -23,7 +23,7 @@ public class Task {
     @NotBlank(message = "{task.title.notblank}")
     private String title;
 
-    @Size(min = 10, max = 255, message = "{task.description.size}")
+    @Size(min = 20, max = 255, message = "{task.description.size}")
     private String description;
 
     @Min(value = 1, message = "{task.score.min}")
@@ -32,4 +32,5 @@ public class Task {
 
     @Min(0) @Max(100)
     private int status;
+
 }
