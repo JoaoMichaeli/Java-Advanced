@@ -1,13 +1,13 @@
-package br.com.fiap.epictask;
+package br.com.fiap.epictaskg;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class EpictaskApplicationTests {
+class EpictaskGApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
