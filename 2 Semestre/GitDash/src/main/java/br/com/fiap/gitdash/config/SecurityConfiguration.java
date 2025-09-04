@@ -1,4 +1,4 @@
-package br.com.fiap.epictaskg.config;
+package br.com.fiap.gitdash.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,5 +17,4 @@ public class SecurityConfiguration {
                 .oauth2Login(login -> login.defaultSuccessUrl("/task"))
                 .build();
     }
-
 }

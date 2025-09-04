@@ -1,0 +1,10 @@
+services:
+  postgres:
+    image: 'postgres:latest'
+    container_name: gitdash
+    environment:
+      - 'POSTGRES_DB=gitdash'
+      - 'POSTGRES_PASSWORD=gitdash'
+      - 'POSTGRES_USER=gitdash'
+    ports:
+      - '5432:5432'
